@@ -1,0 +1,5 @@
+#!/bin/sh
+if test -f ~/.sbtconfig; then
+  . ~/.sbtconfig
+fi
+exec java -XX:ReservedCodeCacheSize=128M -Xss2M -Xms128M -Xmx1536M -XX:MaxPermSize=512M -XX:+UseCompressedOops ${SBT_OPTS} -jar `dirname $0`~/bin/sbt-launch-0.11.2.jar -Dakka.parallelExecution=true "$@"
